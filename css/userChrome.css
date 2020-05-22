@@ -1249,3 +1249,8 @@ toolbar .toolbarbutton-1:not([disabled=true]):not([checked]):not([open]):not(:ac
 }
 
 /*# sourceMappingURL=userChrome.css.map */
+
+/* Get icons back in bookmark bar */
+#navigator-toolbox #PersonalToolbar #personal-bookmarks #PlacesToolbarItems .bookmark-item .toolbarbutton-icon {
+  display: inline !important;
+}
