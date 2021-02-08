@@ -4,23 +4,33 @@ This theme will make Firefox more compliant with macOS.
 
 <p align="center"><img alt="Firefox with NelliTab" src="https://raw.githubusercontent.com/ideaweb/firefox-safari-style/master/img/preview.png"/><br/><i>Firefox with macOS theme and <a href="https://nellitab.io">NelliTab</a> new tab extension</i></p>
 
+<p align="center"><img alt="Firefox with NelliTab" src="https://raw.githubusercontent.com/ideaweb/firefox-safari-style/master/img/preview-legacy.png"/><br/><i>Firefox with legacy macOS theme (Branch 0.1)</i></p>
+
 ## Requirements
 
 *  Firefox 71 or higher for macOS
 
 ## Known issues
 
+* "Tinting" is currently not supported. IF you want that Firefox and macOS have the same colors please disable the option "Allow wallpaper tinting windows" in system preferences.
 * Dark theme is supported but [Firefox not really have native dark mode](https://bugzilla.mozilla.org/buglist.cgi?quicksearch=dark%20mode%20macos) (e.g. context menus are still "light", white line on top of the window etc.)
 
 ## Installing
 
-* [Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) (recommended) or just download this repository 
+* [Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) (recommended) or just download this repository (for legacy theme please checkout branch 0.1)
 * Set ```toolkit.legacyUserProfileCustomizations.stylesheets``` to **true** in [about:config](https://support.mozilla.org/en-US/kb/about-config-editor-firefox)
 * Open the [userChrome.css](http://kb.mozillazine.org/index.php?title=UserChrome.css&printable=yes) file located in your profile folder of Firefox with any text editor
-* Add there the following line to import the userChrome.css of this theme but please do not forget to update the path and do not mix up the imported file with the none working scss/userChrome.scss of this repository
+* Add there one of the following lines below to import your chosen userChrome.css of this theme but please do not forget to update the path and do not mix up the imported file with the none working scss/userChrome.scss of this repository
+
+**Default light and dark theme with macOS colors**
 
 ```css
 @import '/path/to/firefox-safari-style/css/userChrome.css';
+```
+**or use the following file to use the colors from chosen Firefox theme**
+
+```css
+@import '/path/to/firefox-safari-style/css/userChrome-theme.css';
 ```
 
 * Restart Firefox that changes can take effect
@@ -38,8 +48,8 @@ Some code snippets to add extra functionallity. Just add any code below to the e
 Hides tab bar if there is only one tab open. Unfortunately currently its not possible to move the new tab button up and that's why it should be hidden as well.
 
 ```css
-#tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"],
-#tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"] ~ toolbarbutton {
+#tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"]:not([pinned]),
+#tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"]:not([pinned]) ~ toolbarbutton {
   visibility: collapse;
 }
 ```

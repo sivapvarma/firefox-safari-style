@@ -135,6 +135,28 @@
 /******************/
 /* FIREFOX THEMES */
 /******************/
+:root, :root:-moz-lwtheme-brighttext {
+  /* Default Background color */
+  --firefox-safari-style-background-color-active: var(--toolbar-bgcolor);
+  /* Background color for inactive windows */
+  --firefox-safari-style-background-color-inactive: var(--firefox-safari-style-background-color-active);
+  /* Default background color */
+  --firefox-safari-style-tab-background-color-inactive: var(--lwt-accent-color);
+  /* Background active tab */
+  --firefox-safari-style-tab-background-color-active: var(--firefox-safari-style-background-color-active);
+  /* Colors e.g. for tabs or bookmarks */
+  --firefox-safari-style-tab-color: var(--lwt-tab-text, var(--toolbar-color));
+  --firefox-safari-style-tab-hover-color: var(--firefox-safari-style-tab-color);
+  --firefox-safari-style-tab-hover-background: var(--firefox-safari-style-input-background-active);
+  /* Input background */
+  --firefox-safari-style-input-background-active: var(--lwt-toolbar-field-background-color, hsla(0,0%,100%,.8));
+  --firefox-safari-style-input-background-inactive: var(--firefox-safari-style-input-background-active);
+  /* Button background */
+  --firefox-safari-style-button-background-hover: var(--firefox-safari-style-input-background-active);
+  /* Font and icon color of buttons and urlbar */
+  --firefox-safari-style-button-color: var(--lwt-toolbar-field-color, black);
+}
+
 @media (-moz-mac-yosemite-theme), (-moz-mac-big-sur-theme) {
   /*-moz-appearance: -moz-mac-vibrant-titlebar-light !important;*/
   :root {
@@ -165,10 +187,10 @@
     box-sizing: border-box;
   }
   #main-window html|body, #main-window #nav-bar, #main-window .tabbrowser-tab[selected=true], #main-window #PersonalToolbar, #main-window #tabbrowser-tabpanels {
-    background: var(--firefox-safari-style-background-color-active) !important;
+    background-color: var(--firefox-safari-style-background-color-active) !important;
   }
   #main-window html|body:-moz-window-inactive, #main-window #nav-bar:-moz-window-inactive, #main-window .tabbrowser-tab[selected=true]:-moz-window-inactive, #main-window #PersonalToolbar:-moz-window-inactive, #main-window #tabbrowser-tabpanels:-moz-window-inactive {
-    background: var(--firefox-safari-style-background-color-inactive) !important;
+    background-color: var(--firefox-safari-style-background-color-inactive) !important;
   }
   #main-window #TabsToolbar .toolbar-items {
     box-shadow: inset 0px 1px 0px var(--firefox-safari-style-tab-border-color-active), inset 0 2px 2px -1px var(--firefox-safari-style-tab-border-color-active);
@@ -188,7 +210,6 @@
 #main-window .toolbar-items #alltabs-button,
 #main-window #alltabs-button {
     background-color: transparent !important;
-    background-image: linear-gradient(to bottom, var(--firefox-safari-style-tab-background-color-inactive) 0%, var(--firefox-safari-style-tab-background-color-inactive) 100%) !important;
   }
   #main-window .tabbrowser-tab:not([selected=true]):not([disabled=true]):hover,
 #main-window .toolbar-items #new-tab-button:not([disabled=true]):hover,
@@ -219,7 +240,8 @@
     width: 100%;
     min-width: 100%;
     max-width: 100%;
-    background-image: none !important;
+    background-color: var(--firefox-safari-style-tab-background-color-inactive) !important;
+    background-image: var(--lwt-header-image) !important;
     border-bottom: 1px solid var(--firefox-safari-style-tab-border-bottom-color-active) !important;
   }
   #navigator-toolbox:-moz-window-inactive {
@@ -1351,13 +1373,6 @@ spacer[part=overflow-end-indicator] {
     display: none !important;
   }
 }
-
-/*# sourceMappingURL=userChrome.css.map */
-
-/* Get icons back in bookmark bar */
-#navigator-toolbox #PersonalToolbar #personal-bookmarks #PlacesToolbarItems .bookmark-item .toolbarbutton-icon {
-  display: inline !important;
-}
 @media (-moz-mac-yosemite-theme), (-moz-mac-big-sur-theme) {
   #appMenu-popup, #widget-overflow {
     filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.1));
@@ -1375,7 +1390,6 @@ spacer[part=overflow-end-indicator] {
     min-width: 26px;
     list-style: none !important;
     background-color: transparent !important;
-    background-image: linear-gradient(to bottom, var(--firefox-safari-style-tab-background-color-inactive) 0%, var(--firefox-safari-style-tab-background-color-inactive) 100%) !important;
   }
   #scrollbutton-up, #scrollbutton-up image,
 #scrollbutton-down,
